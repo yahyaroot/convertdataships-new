@@ -1,0 +1,526 @@
+/* ================= THEME ================= */
+
+ :root {
+    --bg: #f8fafc;
+    --glass: rgba(255, 255, 255, .75);
+    --card: #ffffff;
+    --border: #e5e7eb;
+    --text: #0f172a;
+    --muted: #64748b;
+    --blue: #3b82f6;
+    --green: #22c55e;
+    --amber: #f59e0b;
+    --violet: #8b5cf6;
+    --radius: 14px;
+    --shadow: 0 20px 40px rgba(0, 0, 0, .08);
+}
+
+
+/* 🌙 Dark Mode */
+
+body.dark {
+    --bg: #020617;
+    --glass: rgba(15, 23, 42, .8);
+    --card: #020617;
+    --border: #1e293b;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+}
+
+
+/* ================= BASE ================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg, var(--bg), var(--bg));
+    color: var(--text);
+    transition: background .3s, color .3s;
+}
+
+
+/* ================= ANNOUNCEMENT BANNER (POLICE LINE STYLE) ================= */
+
+.announcement-banner {
+    background: repeating-linear-gradient( 45deg, #FFC107, #FFC107 30px, #000000 30px, #000000 60px);
+    overflow: hidden;
+    position: relative;
+    padding: 10px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid #000000;
+    display: none;
+    /* Hidden by default */
+}
+
+.announcement-banner.show {
+    display: block;
+}
+
+.announcement-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+    animation: scroll-left 35s linear infinite;
+}
+
+.announcement-content:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.announcement-icon {
+    font-size: 18px;
+    animation: pulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.announcement-text {
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.announcement-separator {
+    width: 2px;
+    height: 16px;
+    background: #FFFFFF;
+    margin: 0 20px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+
+/* ================= HEADER ================= */
+
+header {
+    padding: 36px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: auto;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+header h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+header p {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.header-right {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+
+/* Dark toggle */
+
+.toggle {
+    cursor: pointer;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 14px;
+}
+
+
+/* ================= FIXED DONATE BUTTON (BOTTOM RIGHT) ================= */
+
+.donate-btn-fixed {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: linear-gradient(135deg, #6F4E37, #8B6F47);
+    color: white;
+    padding: 14px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 25px rgba(111, 78, 55, 0.4);
+    z-index: 1000;
+}
+
+.donate-btn-fixed:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(111, 78, 55, 0.6);
+    background: linear-gradient(135deg, #8B6F47, #A0826D);
+}
+
+.donate-btn-fixed .donate-text {
+    font-weight: 600;
+}
+
+
+/* Coffee Cup Animation */
+
+.coffee-icon {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+
+/* Coffee Cup */
+
+.coffee-cup {
+    position: absolute;
+    width: 16px;
+    height: 12px;
+    border: 2.5px solid #FFF8DC;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    bottom: 0;
+    left: 2px;
+    background: linear-gradient(180deg, transparent 0%, #3E2723 100%);
+}
+
+
+/* Coffee Cup Handle */
+
+.coffee-cup::before {
+    content: '';
+    position: absolute;
+    right: -7px;
+    top: 2px;
+    width: 6px;
+    height: 6px;
+    border: 2.5px solid #FFF8DC;
+    border-left: none;
+    border-top: none;
+    border-radius: 0 4px 4px 0;
+}
+
+
+/* Steam Animation */
+
+.steam {
+    position: absolute;
+    width: 2px;
+    height: 8px;
+    background: linear-gradient(to top, rgba(255, 248, 220, 0.8), rgba(255, 248, 220, 0));
+    border-radius: 2px;
+    opacity: 0;
+    animation: steam-rise 2s ease-in-out infinite;
+}
+
+.steam:nth-child(1) {
+    left: 6px;
+    animation-delay: 0s;
+}
+
+.steam:nth-child(2) {
+    left: 10px;
+    animation-delay: 0.3s;
+}
+
+.steam:nth-child(3) {
+    left: 14px;
+    animation-delay: 0.6s;
+}
+
+@keyframes steam-rise {
+    0% {
+        bottom: 12px;
+        opacity: 0;
+        transform: translateY(0) translateX(0) scale(1);
+    }
+    25% {
+        opacity: 0.6;
+        transform: translateX(1px);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateX(-1px);
+    }
+    75% {
+        opacity: 0.4;
+        transform: translateX(0.5px);
+    }
+    100% {
+        bottom: 22px;
+        opacity: 0;
+        transform: translateY(-5px) translateX(0) scale(0.6);
+    }
+}
+
+
+/* Coffee Pouring Animation on Hover */
+
+.donate-btn-fixed:hover .coffee-fill {
+    animation: fill-coffee 1.5s ease-in-out infinite;
+}
+
+.coffee-fill {
+    position: absolute;
+    bottom: 2px;
+    left: 4px;
+    width: 12px;
+    height: 0;
+    background: linear-gradient(180deg, #8B4513, #5D3A1A);
+    border-radius: 0 0 6px 6px;
+}
+
+@keyframes fill-coffee {
+    0%,
+    100% {
+        height: 2px;
+    }
+    50% {
+        height: 8px;
+    }
+}
+
+
+/* Coffee Beans Decoration */
+
+.donate-btn-fixed::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(139, 69, 19, 0.3);
+    border-radius: 50%;
+    left: 10px;
+    top: 8px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.donate-btn-fixed::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(139, 69, 19, 0.2);
+    border-radius: 50%;
+    right: 15px;
+    bottom: 10px;
+    animation: float 3s ease-in-out infinite 1.5s;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-3px);
+        opacity: 0.6;
+    }
+}
+
+
+/* Responsive - hide text on mobile, show only icon */
+
+@media(max-width: 600px) {
+    .donate-btn-fixed {
+        padding: 12px;
+        border-radius: 50%;
+    }
+    .donate-btn-fixed .donate-text {
+        display: none;
+    }
+}
+
+
+/* ================= LAYOUT ================= */
+
+.container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 0 20px 60px;
+}
+
+.card {
+    background: var(--glass);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+
+/* ================= CONTROLS ================= */
+
+.controls {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+}
+
+.controls-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.controls-right {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+input[type=file]::file-selector-button {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 14px;
+    cursor: pointer;
+    color: var(--text);
+}
+
+
+/* ================= BUTTONS ================= */
+
+button {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #fff;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .25);
+}
+
+.btn-green {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.btn-amber {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.btn-violet {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+}
+
+.btn-blue {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+
+/* ================= SUMMARY ================= */
+
+#summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+}
+
+.pill {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pill b {
+    font-size: 20px;
+    color: var(--blue);
+}
+
+
+/* ================= TABLE ================= */
+
+.table-wrapper {
+    overflow: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background: var(--card);
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 14px;
+}
+
+tbody td {
+    padding: 14px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+}
+
+tbody tr:hover td {
+    background: rgba(100, 116, 139, .1);
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px) {
+    .controls {
+        grid-template-columns: 1fr;
+    }
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .header-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

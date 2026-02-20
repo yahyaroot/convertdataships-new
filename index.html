@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ship Data Import</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+
+</head>
+<link rel="stylesheet" href="styles.css">
+
+<body>
+
+    <script>
+        // ============================================
+        // 🎯 BANNER CONFIGURATION
+        // ============================================
+        // Set to 1 to show banner, 0 to hide banner
+        let SHOW_BANNER = 1;
+
+        // ============================================
+    </script>
+
+    <!-- Announcement Banner (Police Line Style) -->
+    <div class="announcement-banner" id="attentionBanner">
+        <div class="announcement-content">
+            <span class="announcement-icon">⚠️</span>
+            <span class="announcement-text">
+                PERHATIAN: Website ini menggunakan hosting & domain gratis untuk kemudahan akses
+            </span>
+            <span class="announcement-separator"></span>
+
+            <span class="announcement-icon">⚠️</span>
+            <span class="announcement-text">
+                Jika mengalami kendala teknis akibat keterbatasan layanan gratis, silakan lanjutkan laporan data AIS secara manual seperti biasa, Mohon Permaklumannya
+            </span>
+            <span class="announcement-separator"></span>
+
+            <span class="announcement-icon">💙</span>
+            <span class="announcement-text">
+                Terima kasih atas pengertiannya! Website ini dibuat dengan tujuan mempermudah pekerjaan Anda
+            </span>
+            <span class="announcement-separator"></span>
+
+            <!-- Repeat for continuous scroll -->
+            <span class="announcement-icon">⚠️</span>
+            <span class="announcement-text">
+                PERHATIAN: Website ini menggunakan hosting & domain gratis untuk kemudahan akses
+            </span>
+            <span class="announcement-separator"></span>
+
+            <span class="announcement-icon">⚠️</span>
+            <span class="announcement-text">
+                Jika mengalami kendala teknis akibat keterbatasan layanan gratis, silakan lanjutkan laporan data AIS secara manual seperti biasa
+            </span>
+            <span class="announcement-separator"></span>
+
+            <span class="announcement-icon">💙</span>
+            <span class="announcement-text">
+                Terima kasih atas pengertiannya! Website ini dibuat dengan tujuan mempermudah pekerjaan Anda
+            </span>
+        </div>
+    </div>
+
+    <header>
+        <div>
+            <h1>🚢 Ship Data Processing</h1>
+            <p>Import & export AIS ship data dashboard</p>
+        </div>
+
+        <div class="header-right">
+            <div class="toggle" onclick="toggleDark()">🌙 Dark</div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="card controls">
+            <div class="controls-left">
+                <strong>Upload File</strong>
+                <input type="file" id="fileInput" accept=".csv,.xls,.xlsx">
+            </div>
+
+            <div class="controls-right">
+                <button class="btn-green" onclick="exportViaTemplateKapalIkan(this)">🐟 Kapal Ikan</button>
+                <button class="btn-amber" onclick="exportViaTemplateKapalAsing(this)">🌍 Kapal Asing</button>
+                <button class="btn-violet" onclick="exportViaTemplatePHPHarian(this)">📊 Rekap AIS</button>
+                <button class="btn-blue" onclick="exportViaTemplatePHP(this)">📄 Laporan AIS</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="summary"></div>
+        </div>
+
+        <div class="card">
+            <div class="table-wrapper">
+                <table>
+                    <thead id="thead"></thead>
+                    <tbody id="tbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Fixed Donate Button (Bottom Right) -->
+    <a href="https://www.nihbuatjajan.com/jajanbuatamri" target="_blank" class="donate-btn-fixed">
+        <div class="coffee-icon">
+            <div class="steam"></div>
+            <div class="steam"></div>
+            <div class="steam"></div>
+            <div class="coffee-cup">
+                <div class="coffee-fill"></div>
+            </div>
+        </div>
+        <span class="donate-text">Traktir Kopi</span>
+    </a>
+
+    <script>
+        // Initialize banner visibility
+        if (SHOW_BANNER === 1) {
+            document.getElementById('attentionBanner').classList.add('show');
+        }
+
+        function toggleDark() {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme',
+                document.body.classList.contains('dark') ? 'dark' : 'light'
+            );
+        }
+
+        // Load preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+        }
+    </script>
+
+    <script src="function.js"></script>
+</body>
+
+</html>
